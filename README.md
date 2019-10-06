@@ -6,7 +6,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ## run Flask app: 
 export FLASK_APP=recsys.py
+
 export FLASK_DEBUG=1
+
 flask run
 
 Note: Windows commands may be different
