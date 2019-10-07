@@ -2,5 +2,10 @@
 
 {% block content %}
 <h1>Welcome to Movie Recommendation System</h1>
+{% if not current_user.is_anonymous %}
+<p>Hi, {{ current_user.username }}!</p>
+{% else %}
+<p>You are not logged in.</p>
+{% endif %}
 
 {% endblock %}
