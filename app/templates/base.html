@@ -2,7 +2,6 @@
 <html lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,29 +23,42 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Search</button>
+                    </form>
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="/" style="font-size: 90%;">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    {% if current_user.is_anonymous %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/signup" style="font-size: 90%;">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login" style="font-size: 90%;">Log In</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout" style="font-size: 90%;">Log Out</a>
-                    </li>
-                    {% endif %}
+                    </li> -->
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_anonymous %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup" style="font-size: 90%;"><i class="fas fa-user-plus "></i> Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login" style="font-size: 90%;"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="font-size: 90%;"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                </li>
+                {% endif %}
+                </ul>
+                
+                
             </div>
         </nav>
-        
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -57,5 +69,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f5c18cb369.js" crossorigin="anonymous"></script>
     </body>
 </html>
