@@ -9,9 +9,11 @@
 
 {% endif %}
 <h2>Popular Movies: </h2>
-{% for movie in topN %}
+{% for movie, poster in topN.items() %}
 <div>
     <p>{{ movie }}</p>
+    <img src="http://image.tmdb.org/t/p/w300/{{ poster }}" alt="">
+    <br><br>
 </div>
 {% endfor %}
 

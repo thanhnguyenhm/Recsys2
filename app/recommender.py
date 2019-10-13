@@ -1,3 +1,4 @@
+# algorithms from https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system
 import pandas as pd
 import numpy as np
 import sqlite3
@@ -30,6 +31,8 @@ q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
 # Sort movies based on score calculated above
 q_movies = q_movies.sort_values('score', ascending=False)
 
-# Print the top 15 movies
+# Print the top n movies
 def top_n_movies(n):
-    return list(q_movies['title'].head(n))
+    # return dict(zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
+    zipOb = zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
+    return dict(zipOb)

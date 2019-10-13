@@ -1,5 +1,8 @@
 After cloning to your local machine:
 
+## set up virtual environment
+python3 -m venv venv
+
 ## activate virtual environment: 
 Unix:
     source venv/bin/activate
