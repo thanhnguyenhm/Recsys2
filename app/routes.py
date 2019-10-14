@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request, redirect, flash
+from flask import render_template, url_for, request, redirect, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from app import app, db
 from app.forms import LoginForm, SignupForm
@@ -6,6 +6,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
 from app.recommender import top_n_movies
+import json
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -13,7 +14,7 @@ from app.recommender import top_n_movies
 def index():
     topN = top_n_movies(10)
     # return render_template('index.html')
-    return render_template('index.html', topN=topN)
+    return render_template('index.html', topN=json.dumps(topN))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
