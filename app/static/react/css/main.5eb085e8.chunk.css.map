@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,EACE,qBACF,CAEA,KACE,sCAAyC,CACzC,eACF,CAEA,EACE,UAAW,CACX,oBACF","file":"main.5eb085e8.chunk.css","sourcesContent":["* {\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: Arial, Helvetica, sans-serif;\n  line-height: 1.4;\n}\n\na {\n  color: blue;\n  text-decoration: none;\n}"]}

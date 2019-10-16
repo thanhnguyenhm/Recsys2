@@ -36,5 +36,19 @@ Windows:
 
     flask run
 
+## set up react:
+
+    cd react-frontend
+    yarn install
+
+To stop venv:
 ## deactivate virtual environment:
     deactivate
+
+After modifying files in react:
+## build react:
+
+    cd react-frontend
+    npm run build
+    cd ..
+    flask run
