@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from app import app, db
 from app.forms import LoginForm, SignupForm
 from flask_login import login_user, logout_user, current_user, login_required
-from app.models import User, Movie
+from app.models import User
 from werkzeug.urls import url_parse
 from app.recommender import top_n_movies
 
@@ -58,7 +58,7 @@ def movies():
     # params from search.js
     #   query: string - substrings to filter for
     #   limit: int - number of items to get
-    movies_list =
+    #movies_list =
     movies = []
 
     for movie in movies_list:

@@ -21,32 +21,20 @@ Windows:
 ## install dependencies: 
     pip install -r requirements.txt
 
-## setup Flask app: 
+## run Flask app: 
 Unix:
 
     export FLASK_APP=recsys.py
 
     export FLASK_DEBUG=1
 
+    flask run
+
 Windows:
 
     $env:FLASK_APP = "recsys.py"
 
-## set up react:
+    flask run
 
-    cd react_frontend
-	
-    npm install
-
-To stop venv:
 ## deactivate virtual environment:
     deactivate
-	
-To run project:
-## run flask (on terminal with venv):
-
-	flask run
-	
-## start react (on a separate terminal):
-
-	npm start

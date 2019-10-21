@@ -19,7 +19,7 @@ class App extends Component {
     const { movies } = this.state;
     return (
       <div className="App">
-        <h1>Welcom to Movie Recommendation System</h1>
+        <h1>Welcome to Movie Recommendation System</h1>
         <Search />
         <h2>Popular Movies</h2>
         <Movies movies={ movies } />
