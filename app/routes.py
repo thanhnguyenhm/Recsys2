@@ -5,7 +5,7 @@ from app.forms import LoginForm, SignupForm
 from flask_login import login_user, logout_user, current_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
-from app.recommender import top_n_movies
+from app.recommender import top_n_movies, q_movies
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -51,3 +51,7 @@ def logout():
 @app.route('/popular')
 def popular():
     return top_n_movies(10)
+
+@app.route('/movies', methods=['GET'])
+def movies():
+    return q_movies

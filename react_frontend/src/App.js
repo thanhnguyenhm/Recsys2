@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Movies from './components/Movies'
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    movies: {},
+  }
+
+  componentDidMount() {
+    fetch('/popular').then(response => response.json()).then(data => this.setState({movies: data}))
+  }
+
+  render() {
+    const { movies } = this.state;
+    return (
+      <div className="App">
+        <h1>Welcom to Movie Recommendation System</h1>
+        <Search />
+        <h2>Popular Movies</h2>
+        <Movies movies={ movies } />
+      </div>
+    );
+  }
 }
 
 export default App;
