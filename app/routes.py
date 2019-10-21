@@ -3,9 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from app import app, db
 from app.forms import LoginForm, SignupForm
 from flask_login import login_user, logout_user, current_user, login_required
-from app.models import User
+from app.models import User, Movie
 from werkzeug.urls import url_parse
-from app.recommender import top_n_movies, q_movies
+from app.recommender import top_n_movies
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -54,4 +54,14 @@ def popular():
 
 @app.route('/movies', methods=['GET'])
 def movies():
-    return q_movies
+    # NOT DONE. HOW TO CONNECT TO TMDB?
+    # params from search.js
+    #   query: string - substrings to filter for
+    #   limit: int - number of items to get
+    movies_list =
+    movies = []
+
+    for movie in movies_list:
+        movies.append({'title' : movie.title, 'poster_path' : movie.poster_path})
+
+    return jsonify({'movies' : movies})

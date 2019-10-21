@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Search from './components/Search'
 import Movies from './components/Movies'
 
 import './App.css';
@@ -9,7 +10,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/popular').then(response => response.json()).then(data => this.setState({movies: data}))
+    fetch('/popular')
+      .then(response => response.json())
+      .then(data => this.setState({movies: data}))
   }
 
   render() {
