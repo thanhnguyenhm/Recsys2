@@ -47,3 +47,7 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/popular')
+def popular():
+    return top_n_movies(10)
