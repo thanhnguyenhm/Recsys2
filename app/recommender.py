@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import sqlite3
+from collections import OrderedDict
 
 
 conn = sqlite3.connect("tmdb.db")
@@ -33,6 +34,5 @@ q_movies = q_movies.sort_values('score', ascending=False)
 
 # Print the top n movies
 def top_n_movies(n):
-    # return dict(zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
     zipOb = zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
-    return dict(zipOb)
+    return OrderedDict(zipOb)

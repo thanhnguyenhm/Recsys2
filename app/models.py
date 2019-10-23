@@ -22,4 +22,7 @@ class User(UserMixin, db.Model):
     def load_user(id):
         return User.query.get(int(id))
 
-        
+class MovieRating(db.Model):
+    movie_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer)
