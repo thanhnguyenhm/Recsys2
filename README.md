@@ -1,18 +1,29 @@
 After cloning to your local machine:
 
 ## set up virtual environment
-python3 -m venv venv
+Unix:
+
+    python3 -m venv venv
+
+Windows:
+
+    py -m venv venv
 
 ## activate virtual environment: 
 Unix:
+
     source venv/bin/activate
 
 Windows:
-    ./venv/bin/activate
+
+    ./venv/Scripts/activate
+
 ## install dependencies: 
-pip install -r requirements.txt
+    pip install -r requirements.txt
+
 ## run Flask app: 
 Unix:
+
     export FLASK_APP=recsys.py
 
     export FLASK_DEBUG=1
@@ -20,9 +31,10 @@ Unix:
     flask run
 
 Windows:
+
     $env:FLASK_APP = "recsys.py"
 
     flask run
 
 ## deactivate virtual environment:
-deactivate
+    deactivate
