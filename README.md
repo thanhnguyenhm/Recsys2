@@ -36,5 +36,11 @@ Windows:
 
     flask run
 
+## run React front end:
+Unix:
+    cd frontend
+
+    npm start
+
 ## deactivate virtual environment:
     deactivate
