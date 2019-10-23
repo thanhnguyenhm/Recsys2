@@ -20,7 +20,7 @@ def index():
     # return jsonify({'movies': json_movies})
     return json.dumps(topN)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/users/login', methods=['GET', 'POST'])
 def login():
     ###########################################
     ############### FLASK VERSION ##############
@@ -56,7 +56,7 @@ def login():
 
     return result
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/users/register', methods=['GET', 'POST'])
 def signup():
     ###########################################
     ############### FLASK VERSION ##############
