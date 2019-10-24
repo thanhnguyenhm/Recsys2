@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// to be deleted. 
 class Landing extends Component {
     render() {
         return (

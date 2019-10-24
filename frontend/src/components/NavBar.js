@@ -1,5 +1,6 @@
 import React from 'react';
 
+// to be deleted
 class NavBar extends React.Component {
 
     render() {
