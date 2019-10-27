@@ -7,7 +7,7 @@ Unix:
 
 Windows:
 
-    py -m venv venv
+    virtualenv -p python3 venv
 
 ## activate virtual environment: 
 Unix:

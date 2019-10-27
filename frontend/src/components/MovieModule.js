@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Rating, Card, Icon, Image } from 'semantic-ui-react'
+import { Rating, Card, Image } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
 class MovieModule extends Component {

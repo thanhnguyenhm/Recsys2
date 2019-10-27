@@ -6,7 +6,12 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
 from app.recommender import top_n_movies
+from app.all_movies import all_movies
 from flask_jwt_extended import (create_access_token)
+import pandas as pd
+import numpy as np
+import sqlite3
+from collections import OrderedDict
 
 
 
@@ -14,11 +19,21 @@ from flask_jwt_extended import (create_access_token)
 @app.route('/index', methods=['POST', 'GET'])
 def index():
     topN = top_n_movies(50)
-    # return render_template('index.html')
-    # return render_template('index.html', topN=topN)
-    # json_movies = json.dumps(topN)
-    # return jsonify({'movies': json_movies})
     return json.dumps(topN)
+
+@app.route('/browse/<page_number>', methods=['POST', 'GET'])
+def browse(page_number):
+    movies = all_movies()
+    page = int(page_number)
+    if (page > 95):
+        start = 4750
+        end = 4800
+    else:
+        start = (page - 1) * 50
+        end = start + 49
+    movies_page = sorted(list(movies))[start:end]
+    movies_dict = {i : movies[i] for i in movies_page}
+    return json.dumps(movies_dict)
 
 @app.route('/users/login', methods=['GET', 'POST'])
 def login():
@@ -94,3 +109,25 @@ def signup():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/movies', methods=['GET'])
+def movies():
+    # NOT DONE. HOW TO CONNECT TO TMDB?
+    # params from search.js
+    #   query: string - substrings to filter for
+    #   limit: int - number of items to get
+    query = request.args.get('search')
+    limit = request.args.get('limit')
+
+    conn = sqlite3.connect("tmdb.db")
+    cur = conn.cursor()
+    cur.execute("select * from movies where title like '%" +
+                query + "%' limit " + str(limit) + ";")
+
+    movies = []
+
+    for result in cur:
+        # index 6: movie title, index 20: poster path
+        movies.append({'title': result[6], 'poster_path': result[20]})
+
+    return jsonify({'movies': movies})

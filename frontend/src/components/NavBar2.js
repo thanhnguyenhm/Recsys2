@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Icon, Input } from 'semantic-ui-react'
+import Search from './Search'
 
 class Landing extends Component {
     logOut(e) {
@@ -14,12 +15,12 @@ class Landing extends Component {
             <ul className="nav navbar-nav navbar-right">
                 <li className="nav-item">
                     <Link to="/login" className="nav-link">
-                        <i className="fas fa-sign-in-alt f3"></i> Login
+                        <i className="fas fa-sign-in-alt f3 pa2"></i> Login
         </Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/register" className="nav-link">
-                        <i className="fas fa-user-plus f3"></i> Register
+                        <i className="fas fa-user-plus f3 pa2"></i> Register
         </Link>
                 </li>
             </ul>
@@ -29,12 +30,12 @@ class Landing extends Component {
             <ul className="nav navbar-nav navbar-right">
                 <li className="nav-item">
                     <Link to="/profile" className="nav-link">
-                        <i class="far fa-user f3"></i> User
+                        <i class="far fa-user f3 pa2"></i> User
         </Link>
                 </li>
                 <li className="nav-item">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        <i class="fas fa-sign-out-alt f3"></i> Logout
+                        <i class="fas fa-sign-out-alt f3 pa2"></i> Logout
         </a>
                 </li>
             </ul>
@@ -48,18 +49,28 @@ class Landing extends Component {
                     type="button"
                     data-toggle="collapse"
                     data-target=".navbar-collapse"
-                    // aria-controls="navbarsExample10"
-                    // aria-expanded="false"
-                    // aria-label="Toggle navigation"
                 >
                     <span className="navbar-toggler-icon" />
                 </button>
+
+                <ul className="nav navbar-nav">
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link">
+                            <i class="fas fa-home f3 pa2"></i> Home
+                </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/browse" className="nav-link">
+                            <i class="fas fa-film f3 pa2"></i> All Movies
+                    </Link>
+                    </li>
+                </ul>
 
                 <div
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
                 >
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-auto pa2">
                         <Input 
                             icon={<Icon name='search' inverted circular link />}
                             placeholder='Search...'
