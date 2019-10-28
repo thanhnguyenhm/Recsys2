@@ -25,12 +25,8 @@ def index():
 def browse(page_number):
     movies = all_movies()
     page = int(page_number)
-    if (page > 95):
-        start = 4750
-        end = 4800
-    else:
-        start = (page - 1) * 50
-        end = start + 49
+    start = (page - 1) * 48
+    end = start + 48
     movies_page = sorted(list(movies))[start:end]
     movies_dict = {i : movies[i] for i in movies_page}
     return json.dumps(movies_dict)

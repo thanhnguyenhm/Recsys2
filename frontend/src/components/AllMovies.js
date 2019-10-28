@@ -21,15 +21,21 @@ function AllMovies() {
     };
 
     return (
-        <div className='.f2 tc'>
+        <div className='.f2 tc pa4'>
             <h1 id='title'>All Movies</h1>
             <p><Pagination 
                 activePage={activePage}
                 onPageChange={onChange}
-                totalPages={96}
+                totalPages={100}
                 ellipsisItem={null}
             /></p>
             <Movies movies={movies} />
+            <p><Pagination
+                activePage={activePage}
+                onPageChange={onChange}
+                totalPages={100}
+                ellipsisItem={null}
+            /></p>
         </div>
     )
 }
