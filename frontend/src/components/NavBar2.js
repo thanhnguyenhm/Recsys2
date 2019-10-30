@@ -23,11 +23,12 @@ class Landing extends Component {
     }
 
     search(e, data) {
+        
         e.preventDefault()
         if (this.state.query.length > 0) {
             localStorage.setItem('query', this.state.query) 
-            window.location.reload()
             this.props.history.push("/search")
+            window.location.reload()
         }
     }
 
