@@ -1,53 +1,27 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Movies from './Movies'
-import { getMovies } from './MovieFunctions'
+//import { getMovies } from './MovieFunctions'
 
-class Search extends Component {
-    constructor() {
-        super()
-        this.state = {
-            query: '',
-            results: {}
-        }
+function Search() {
+    const [movies, setMovies] = useState([]);
 
-        this.getInfo = this.getInfo.bind(this)
-        this.handleInputChange = this.handleInputChange.bind(this)
-    }
+    useEffect(() => {
+        //getMovies(localStorage.getItem('query')[0] != '[' ? localStorage.getItem('query') : '')
+        fetch('/movies?search=' + localStorage.getItem('query') + '&limit=10')
+        .then(response =>
+            response.json().then(data => {
+                console.log(data)
+                setMovies(data);
+            })
+        );
+    }, []);
 
-    getInfo = () => {
-        const query = this.state.query
-
-        getMovies(query)
-        /*fetch('/movies?query=${this.state.query}&limit=5', {method: 'GET'})
-        .then(response => response.json())
-        .then(data => this.setState({results: data}))*/
-    }
-
-    handleInputChange = () => {
-        this.setState({
-            query: this.search.value
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 2 === 0) {
-                    this.getInfo()
-                }
-            } else if (!this.state.query) {
-            }
-        })
-    }
-
-    render() {
-        return (
-            <form>
-                <input
-                    placeholder="Search..."
-                    ref={input => this.search = input}
-                    onChange={this.handleInputChange}
-                />
-                <Movies movies={this.state.results} />
-            </form>
-        )
-    }
+    return (
+        <div className='.f2 tc pa4'>
+            <h1 id='title'>Searched Movies</h1>
+            <Movies movies={movies} />
+        </div>
+    )  
 }
 
-export default Search; 
+export default Search;

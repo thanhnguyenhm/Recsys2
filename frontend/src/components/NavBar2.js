@@ -1,13 +1,34 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Icon, Input } from 'semantic-ui-react'
-// import Search from './Search'
 
 class Landing extends Component {
+    constructor() {
+        super()
+        this.state = {
+            query: '',
+        }
+    }
+
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/`)
+    }
+
+    handleInputChange(e, data) {
+        this.setState({
+            query: data.value
+        })
+    }
+
+    search(e, data) {
+        e.preventDefault()
+        if (this.state.query.length > 0) {
+            localStorage.setItem('query', this.state.query) 
+            window.location.reload()
+            this.props.history.push("/search")
+        }
     }
 
     render() {
@@ -72,7 +93,8 @@ class Landing extends Component {
                     </ul>
                     <ul className="navbar-nav mr-auto pa2">
                         <Input 
-                            icon={<Icon name='search' inverted circular link />}
+                            icon={<Icon name='search' inverted circular link onClick={this.search.bind(this)}/>}
+                            onChange={this.handleInputChange.bind(this)}
                             placeholder='Search...'
                         />
                     </ul>

@@ -120,10 +120,9 @@ def movies():
     cur.execute("select * from movies where title like '%" +
                 query + "%' limit " + str(limit) + ";")
 
-    movies = []
+    movies = {}
 
     for result in cur:
         # index 6: movie title, index 20: poster path
-        movies.append({'title': result[6], 'poster_path': result[20]})
-
-    return jsonify({'movies': movies})
+        movies[result[6]] = result[20]
+    return json.dumps(dict(movies))
