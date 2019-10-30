@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Icon, Input } from 'semantic-ui-react'
+import { Icon, Form, Input } from 'semantic-ui-react'
 
 class Landing extends Component {
     constructor() {
@@ -93,11 +93,13 @@ class Landing extends Component {
                         </li>
                     </ul>
                     <ul className="navbar-nav mr-auto pa2">
-                        <Input 
-                            icon={<Icon name='search' inverted circular link onClick={this.search.bind(this)}/>}
-                            onChange={this.handleInputChange.bind(this)}
-                            placeholder='Search...'
-                        />
+                        <Form onSubmit={this.search.bind(this)}>
+                            <Form.Input 
+                                icon={<Icon name='search' inverted circular link onClick={this.search.bind(this)}/>}
+                                onChange={this.handleInputChange.bind(this)}
+                                placeholder='Search...'
+                            />
+                        </Form>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                     </ul>
