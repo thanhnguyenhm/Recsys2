@@ -25,7 +25,7 @@ class Profile extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="jumbotron mt-5 ">
+                    <div className="jumbotron mt-5">
                         <div className="col-sm-8 mx-auto">
                             <h1 id="title" className="text-center">Profile</h1>
                         </div>
