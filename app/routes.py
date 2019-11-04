@@ -95,9 +95,10 @@ def movies():
 
 
 # Show rated movies
-@app.route('/rated_movies')
-def rated_movies():
-    movie_list = MovieRating.query.all()
+@app.route('/rated_movies/<user>')
+def rated_movies(user):
+    movie_list = MovieRating.query.filter_by(username=user)
+    # movie_list = MovieRating.query.all()
     rated_movies = []
 
     conn = sqlite3.connect("tmdb.db")
@@ -122,14 +123,13 @@ def add_rating():
     movie_data = request.get_json()
 
     # check if current rating exists
-    # TODO: need to add user_id for MovieRating model
-    rating = MovieRating.query.filter_by(title=movie_data['title']).first()
+    rating = MovieRating.query.filter_by(title=movie_data['title'], username=movie_data['user']).first()
     if rating is not None:
         db.session.delete(rating)
         db.session.commit()
 
     movie_rating = MovieRating(
-        title=movie_data['title'], rating=movie_data['rating'])
+        title=movie_data['title'], rating=movie_data['rating'], username=movie_data['user'])
 
     if movie_data['rating'] != 0:
         db.session.add(movie_rating)

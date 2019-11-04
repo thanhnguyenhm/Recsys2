@@ -23,19 +23,21 @@ function AllMovies() {
     return (
         <div className='.f2 tc pa4'>
             <h1 id='title'>All Movies</h1>
-            <p><Pagination 
+            <Pagination 
                 activePage={activePage}
                 onPageChange={onChange}
                 totalPages={100}
                 ellipsisItem={null}
-            /></p>
-            <Movies movies={movies} />
-            <p><Pagination
+            />
+            <div>
+                <Movies movies={movies} />      
+            </div>
+            <Pagination
                 activePage={activePage}
                 onPageChange={onChange}
                 totalPages={100}
                 ellipsisItem={null}
-            /></p>
+            />
         </div>
     )
 }

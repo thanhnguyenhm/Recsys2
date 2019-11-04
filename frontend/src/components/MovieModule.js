@@ -3,6 +3,7 @@ import { Rating, Card, Image } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 import no_img from './no_image.png'
 import { rate } from './UserFunctions'
+import jwt_decode from 'jwt-decode'
 
 class MovieModule extends Component {
     render() {
@@ -26,17 +27,25 @@ class MovieModule extends Component {
                         rating = {this.props.movie.rating}
                         size='massive' 
                         icon='star' 
-                        maxRating={5} 
+                        maxRating={5}
                         clearable 
                         onRate={async (_, data) => {
-                            this.setState({ rating: data.rating });
-                            const title = this.props.movie.title;
-                            const rating = data.rating;
-                            const movie = { title, rating };
-                            rate(movie)
+                            if (!localStorage.usertoken) {
+                                window.alert("Your rating is not saved. You need to log in first.");
+                            }
+                            else {
+                                const token = localStorage.usertoken
+                                const decoded = jwt_decode(token)
+                                const user = decoded.identity.username;
+                                const title = this.props.movie.title;
+                                const rating = data.rating;
+                                const movie = { title, rating, user};
+                                rate(movie)
+                            }  
                         }}
                         />
                     </Card.Content> 
+                    
                 </Card>
             </div>
         )

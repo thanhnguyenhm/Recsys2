@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MovieModule from './MovieModule';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class Movies extends Component {
     render() {
@@ -21,9 +21,9 @@ class Movies extends Component {
     }
 }
 
-// PropTypes
-Movies.propTypes = {
-    movies: PropTypes.array.isRequired
-}
+// // PropTypes
+// Movies.propTypes = {
+//     movies: PropTypes.isRequired
+// }
 
 export default Movies;

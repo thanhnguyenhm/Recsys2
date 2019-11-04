@@ -36,5 +36,5 @@ class User(UserMixin, db.Model):
 class MovieRating(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
-    # user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64))
     rating = db.Column(db.Integer)

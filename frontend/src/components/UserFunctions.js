@@ -45,7 +45,8 @@ export const rate = rate => {
     return axios
         .post('/add_rating', {
             title: rate.title,
-            rating: rate.rating
+            rating: rate.rating,
+            user: rate.user
         })
         // .then(response => {
         //     console.log('Rated')

@@ -1,15 +1,24 @@
 import MovieModule from "./MovieModule";
 import React, { useEffect, useState } from "react";
+import jwt_decode from 'jwt-decode'
 
 function RatedMovies() {
     const [movies, setMovies] = useState([]);
 
+    // get current username
+    const token = localStorage.usertoken
+    const decoded = jwt_decode(token)
+    const user = decoded.identity.username;
+
+    const url = "/rated_movies/" + user
+
     useEffect(() => {
-        fetch("/rated_movies").then(response =>
+        fetch(url).then(response =>
             response.json().then(data => {
                 setMovies(data.movies);
             })
         );
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     var arr = [];
