@@ -42,6 +42,7 @@ class MovieModule extends Component {
                                 const movie = { title, rating, user};
                                 rate(movie)
                             }  
+                            window.location.reload()
                         }}
                         />
                     </Card.Content> 

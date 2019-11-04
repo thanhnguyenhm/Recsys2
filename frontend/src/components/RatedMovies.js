@@ -33,7 +33,6 @@ function RatedMovies() {
         arr.push(movie);
     }
 
-    // TODO: Need to auto refresh rated movies if users change ratings
     return arr.map((movie) => (
         <MovieModule key={movie.id} movie={movie} />
     ));
