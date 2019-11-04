@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from app import app, db, bcrypt, jwt
 from app.forms import LoginForm, SignupForm
 from flask_login import login_user, logout_user, current_user, login_required
-from app.models import User
+from app.models import User, MovieRating
 from werkzeug.urls import url_parse
 from app.recommender import top_n_movies
 from app.all_movies import all_movies
@@ -33,24 +33,6 @@ def browse(page_number):
 
 @app.route('/users/login', methods=['GET', 'POST'])
 def login():
-    ###########################################
-    ############### FLASK VERSION ##############
-    ###########################################
-    # if current_user.is_authenticated:
-    #     # return redirect(url_for('index'))
-    #     return redirect(url_for('index'))
-    # form = LoginForm()
-    # if form.validate_on_submit():
-    #     user = User.query.filter_by(username=form.username.data).first()
-    #     if user is None or not user.check_password(form.password.data):
-    #         flash('Invalid username or password')
-    #         return redirect(url_for('login'))
-    #     login_user(user, remember=form.remember_me.data)
-    #     return redirect(url_for('index'))
-    # return render_template('login.html',  title='Log In', form=form)
-    ###########################################
-    ################ API VERSION ##############
-    ###########################################
     username = request.get_json()['username']
     password = request.get_json()['password']
     result = ""
@@ -69,23 +51,6 @@ def login():
 
 @app.route('/users/register', methods=['GET', 'POST'])
 def signup():
-    ###########################################
-    ############### FLASK VERSION ##############
-    ###########################################
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('index'))
-    # form = SignupForm()
-    # if form.validate_on_submit():
-    #     user = User(username=form.username.data, email=form.email.data)
-    #     user.set_password(form.password.data)
-    #     db.session.add(user)
-    #     db.session.commit()
-    #     flash('Congratulations, you are now a registered user!')
-    #     return redirect(url_for('login'))
-    # return render_template('signup.html',  title='Sign Up', form=form)
-    ###########################################
-    ################ API VERSION ##############
-    ###########################################
     username = request.get_json()['username']
     email = request.get_json()['email']
     password = bcrypt.generate_password_hash(
@@ -106,6 +71,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+# Search function
 @app.route('/movies', methods=['GET'])
 def movies():
     # NOT DONE. HOW TO CONNECT TO TMDB?
@@ -126,3 +92,50 @@ def movies():
         # index 6: movie title, index 20: poster path
         movies[result[6]] = result[20]
     return json.dumps(dict(movies))
+
+
+# Show rated movies
+@app.route('/rated_movies')
+def rated_movies():
+    movie_list = MovieRating.query.all()
+    rated_movies = []
+    # movies = {}
+
+    conn = sqlite3.connect("tmdb.db")
+    cur = conn.cursor()
+    
+    for movie in movie_list:
+        # find poster using the title
+        query = "select * from movies where title = '" + movie.title + "';"
+        cur.execute(query)
+        for result in cur:
+            # index 20: poster path
+            poster = result[20]
+        rated_movies.append(
+            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster})
+
+    # return json.dumps(dict(rated_movies))
+
+    return jsonify({'movies': rated_movies})
+
+
+# Add rating to movie
+@app.route('/add_rating', methods=['GET', 'POST'])
+def add_rating():
+    movie_data = request.get_json()
+
+    # check if current rating exists
+    # TODO: need to add user_id for MovieRating model
+    rating = MovieRating.query.filter_by(title=movie_data['title']).first()
+    if rating is not None:
+        db.session.delete(rating)
+        db.session.commit()
+
+    movie_rating = MovieRating(
+        title=movie_data['title'], rating=movie_data['rating'])
+
+    if movie_data['rating'] != 0:
+        db.session.add(movie_rating)
+        db.session.commit()
+
+    return 'Done', 201

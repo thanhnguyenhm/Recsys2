@@ -34,6 +34,7 @@ class User(UserMixin, db.Model):
         return User.query.get(int(id))
 
 class MovieRating(db.Model):
-    movie_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    # user_id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer)

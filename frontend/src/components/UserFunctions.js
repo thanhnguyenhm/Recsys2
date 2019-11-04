@@ -40,3 +40,14 @@ export const getProfile = user => {
             console.log(err)
         })
 }
+
+export const rate = rate => {
+    return axios
+        .post('/add_rating', {
+            title: rate.title,
+            rating: rate.rating
+        })
+        // .then(response => {
+        //     console.log('Rated')
+        // })
+}

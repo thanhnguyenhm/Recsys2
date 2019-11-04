@@ -16,7 +16,7 @@ class Movies extends Component {
             i++
         }
         return arr.map((movie) => (
-            <MovieModule key={movie.id} movie={movie} />
+            <MovieModule key={movie.id} movie={movie}/>
         ));
     }
 }

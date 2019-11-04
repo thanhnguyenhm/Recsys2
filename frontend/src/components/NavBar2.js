@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { Icon, Form, Input } from 'semantic-ui-react'
+import { Icon, Form } from 'semantic-ui-react'
 
 class Landing extends Component {
     constructor() {
@@ -98,6 +98,7 @@ class Landing extends Component {
                                 icon={<Icon name='search' inverted circular link onClick={this.search.bind(this)}/>}
                                 onChange={this.handleInputChange.bind(this)}
                                 placeholder='Search...'
+                                autoFocus
                             />
                         </Form>
                     </ul>
