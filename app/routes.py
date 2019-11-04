@@ -99,7 +99,6 @@ def movies():
 def rated_movies():
     movie_list = MovieRating.query.all()
     rated_movies = []
-    # movies = {}
 
     conn = sqlite3.connect("tmdb.db")
     cur = conn.cursor()
@@ -113,8 +112,6 @@ def rated_movies():
             poster = result[20]
         rated_movies.append(
             {'title': movie.title, 'rating': movie.rating, 'poster_path': poster})
-
-    # return json.dumps(dict(rated_movies))
 
     return jsonify({'movies': rated_movies})
 

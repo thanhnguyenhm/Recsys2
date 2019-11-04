@@ -5,13 +5,6 @@ import no_img from './no_image.png'
 import { rate } from './UserFunctions'
 
 class MovieModule extends Component {
-    // constructor() {
-    //     super()
-    //     this.state = {
-    //         rating: 0
-    //     }
-    // }
-
     render() {
 
         var img_src = "";
