@@ -69,7 +69,7 @@ def browse(page_number):
             # Added movie_id
                 {'title': movie, 'rating': 0, 'poster_path': poster, 'movie_id': movie_id})
     
-    return jsonify(movies_dict)
+    return jsonify({'movies': movies_dict})
     #return json.dumps(movies_dict)
 
 @app.route('/users/login', methods=['GET', 'POST'])
