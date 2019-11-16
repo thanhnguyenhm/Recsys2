@@ -61,7 +61,7 @@ class MovieModule extends Component {
                     
                 </Card>
                 {this.state.showMovieDetails ?
-                    <MovieDetails />
+                    <MovieDetails id={this.props.movie.id}/>
                     : null
                     }
             </div>

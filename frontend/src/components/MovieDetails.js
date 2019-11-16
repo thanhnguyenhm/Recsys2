@@ -11,7 +11,7 @@ class MovieDetails extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api.themoviedb.org/3/movie/19995?api_key=' +API_KEY)
+        axios.get('https://api.themoviedb.org/3/movie/' + this.props.id + '?api_key=' +API_KEY)
             .then(res => {
                 const data = res.data;
                 this.setState({ data });
