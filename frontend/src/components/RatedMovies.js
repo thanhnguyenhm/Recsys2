@@ -25,7 +25,7 @@ function RatedMovies() {
  
     for (var i = 0; i < movies.length; i++) {
         let movie = {
-            id: i,
+            id: movies[i].movie_id,
             title: movies[i].title,
             poster: movies[i].poster_path,
             rating: movies[i].rating

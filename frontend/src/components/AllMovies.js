@@ -10,7 +10,7 @@ function AllMovies() {
     useEffect(() => {
         fetch(apiUrl).then(response =>
             response.json().then(data => {
-                setMovies(data);
+                setMovies(data.movies);
             })
         );
     }, [apiUrl]);

@@ -7,7 +7,8 @@ function Popular() {
     useEffect(() => {
         fetch("/index").then(response =>
             response.json().then(data => {
-                setMovies(data);
+                console.log(data.movies)
+                setMovies(data.movies);
             })
         );
     }, []);
