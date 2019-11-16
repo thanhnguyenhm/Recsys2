@@ -4,8 +4,19 @@ import PropTypes from 'prop-types';
 import no_img from './no_image.png'
 import { rate } from './UserFunctions'
 import jwt_decode from 'jwt-decode'
+import MovieDetails from './MovieDetails'
 
 class MovieModule extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { showMovieDetails: false};
+    }
+
+    toggleMovieDetails() {
+        this.setState({
+            showMovieDetails: !this.state.showMovieDetails
+        });
+    }
     render() {
 
         var img_src = "";
@@ -16,7 +27,7 @@ class MovieModule extends Component {
         }
 
         return (
-            <div className='dib pa3 grow'>
+            <div className='dib pa3 grow' onClick={this.toggleMovieDetails.bind(this)}>
                 <Card>
                     <Image src={img_src} wrapped ui={false} />
                     <Card.Content>
@@ -44,11 +55,18 @@ class MovieModule extends Component {
                             }  
                             window.location.reload()
                         }}
+                        
                         />
                     </Card.Content> 
                     
                 </Card>
+                {this.state.showMovieDetails ?
+                    <MovieDetails />
+                    : null
+                    }
             </div>
+            
+            
         )
     }
 }
