@@ -19,7 +19,27 @@ from collections import OrderedDict
 @app.route('/index', methods=['POST', 'GET'])
 def index():
     topN = top_n_movies(50)
-    return json.dumps(topN)
+    #return jsonify(topN)
+
+    top_movies = []
+
+    conn = sqlite3.connect("tmdb.db")
+    cur = conn.cursor()
+
+    for movie in topN:
+    # find poster using the title
+        #query = "select * from movies where title = '" + movie + "';"
+        #cur.execute(query)
+        cur.execute("select * from movies where title = ?", (movie,))
+        for result in cur:
+            # index 20: poster path
+            # index 3: movie id
+            poster = result[20]
+            movie_id = result[3]
+            top_movies.append(
+            # Added movie_id
+                {'title': movie, 'rating': 0, 'poster_path': poster, 'movie_id': movie_id})
+    return jsonify({'movies': top_movies})
 
 @app.route('/browse/<page_number>', methods=['POST', 'GET'])
 def browse(page_number):
@@ -28,8 +48,29 @@ def browse(page_number):
     start = (page - 1) * 48
     end = start + 48
     movies_page = sorted(list(movies))[start:end]
-    movies_dict = {i : movies[i] for i in movies_page}
-    return json.dumps(movies_dict)
+    #movies_dict = {i : movies[i] for i in movies_page}
+
+    movies_dict = []
+
+    conn = sqlite3.connect("tmdb.db")
+    cur = conn.cursor()
+
+    for movie in movies_page:
+    # find poster using the title
+        #query = "select * from movies where title = '" + movie + "';"
+        #cur.execute(query)
+        cur.execute("select * from movies where title = ?", (movie,))
+        for result in cur:
+            # index 20: poster path
+            # index 3: movie id
+            poster = result[20]
+            movie_id = result[3]
+            movies_dict.append(
+            # Added movie_id
+                {'title': movie, 'rating': 0, 'poster_path': poster, 'movie_id': movie_id})
+    
+    return jsonify(movies_dict)
+    #return json.dumps(movies_dict)
 
 @app.route('/users/login', methods=['GET', 'POST'])
 def login():
@@ -74,10 +115,6 @@ def logout():
 # Search function
 @app.route('/movies', methods=['GET'])
 def movies():
-    # NOT DONE. HOW TO CONNECT TO TMDB?
-    # params from search.js
-    #   query: string - substrings to filter for
-    #   limit: int - number of items to get
     query = request.args.get('search')
     limit = request.args.get('limit')
 
@@ -86,12 +123,16 @@ def movies():
     cur.execute("select * from movies where title like '%" +
                 query + "%' limit " + str(limit) + ";")
 
-    movies = {}
+    searched_movies = []
 
     for result in cur:
         # index 6: movie title, index 20: poster path
-        movies[result[6]] = result[20]
-    return json.dumps(dict(movies))
+        movie_title = result[6]
+        poster = result[20]
+        movie_id = result[3]
+        searched_movies.append(
+            {'title': movie_title, 'rating': 0, 'poster_path': poster, 'movie_id': movie_id})
+    return jsonify({'movies': searched_movies})
 
 
 # Show rated movies
@@ -106,14 +147,17 @@ def rated_movies(user):
     
     for movie in movie_list:
         # find poster using the title
-        query = "select * from movies where title = '" + movie.title + "';"
-        cur.execute(query)
+        #query = "select * from movies where title = '" + movie.title + "';"
+        #cur.execute(query)
+        cur.execute("select * from movies where title = ?", (movie.title,))
         for result in cur:
             # index 20: poster path
+            # index 3: movie id
             poster = result[20]
+            movie_id = result[3]
         rated_movies.append(
-            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster})
-
+            # Added movie_id
+            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
     return jsonify({'movies': rated_movies})
 
 

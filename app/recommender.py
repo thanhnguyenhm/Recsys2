@@ -34,5 +34,6 @@ q_movies = q_movies.sort_values('score', ascending=False)
 
 # Print the top n movies
 def top_n_movies(n):
-    zipOb = zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
-    return OrderedDict(zipOb)
+    #zipOb = zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
+    #return OrderedDict(zipOb)
+    return list(q_movies['title'].head(n))

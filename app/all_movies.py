@@ -12,5 +12,6 @@ df1.columns = ['id', 'tittle', 'cast', 'crew']
 df2 = df2.merge(df1, on='id')
 
 def all_movies():
-    return dict(zip(list(df2['title']),
-                    list(df2['poster_path'])))
+    #return dict(zip(list(df2['title']),
+    #                list(df2['poster_path'])))
+    return list(df2['title'])
