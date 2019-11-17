@@ -19,7 +19,7 @@ class MovieDetails extends Component {
     }
     render() {
         return (
-            <div className='moviedetails'>
+            <div className='moviedetails' onClick={this.props.close}>
                 <div className='moviedetails\_inner'>
                     <h1>test</h1>
                     {console.log(this.state.data)}
