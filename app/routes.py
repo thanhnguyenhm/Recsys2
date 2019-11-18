@@ -126,8 +126,8 @@ def movies():
     searched_movies = []
 
     for result in cur:
-        # index 6: movie title, index 20: poster path
-        movie_title = result[6]
+        # index 17: movie title, index 20: poster path
+        movie_title = result[17]
         poster = result[20]
         movie_id = result[3]
         searched_movies.append(
@@ -145,19 +145,20 @@ def rated_movies(user):
     conn = sqlite3.connect("tmdb.db")
     cur = conn.cursor()
     
-    for movie in movie_list:
-        # find poster using the title
-        #query = "select * from movies where title = '" + movie.title + "';"
-        #cur.execute(query)
-        cur.execute("select * from movies where title = ?", (movie.title,))
-        for result in cur:
-            # index 20: poster path
-            # index 3: movie id
-            poster = result[20]
-            movie_id = result[3]
-        rated_movies.append(
-            # Added movie_id
-            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
+    if movie_list:
+        for movie in movie_list:
+            # find poster using the title
+            #query = "select * from movies where title = '" + movie.title + "';"
+            #cur.execute(query)
+            cur.execute("select * from movies where title = ?", (movie.title,))
+            for result in cur:
+                # index 20: poster path
+                # index 3: movie id
+                poster = result[20]
+                movie_id = result[3]
+            rated_movies.append(
+                # Added movie_id
+                {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
     return jsonify({'movies': rated_movies})
 
 # Show recommended movies
@@ -171,30 +172,32 @@ def rec_movies(user):
     cur = conn.cursor()
 
     # find rated movies (similar to rated_movies route)
-    for movie in movie_list:
-        cur.execute("select * from movies where title = ?", (movie.title,))
-        for result in cur:
-            # index 20: poster path
-            # index 3: movie id
-            poster = result[20]
-            movie_id = result[3]
-        rated_movies.append(
-            # Added movie_id
-            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
+    if movie_list:
+        for movie in movie_list:
+            cur.execute("select * from movies where title = ?", (movie.title,))
+            for result in cur:
+                # index 20: poster path
+                # index 3: movie id
+                poster = result[20]
+                movie_id = result[3]
+            rated_movies.append(
+                # Added movie_id
+                {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
 
     # find recommendation
-    recommended_list = get_recommendation(rated_movies)
-    for movie in recommended_list:
-        # find poster using the title
-        cur.execute("select * from movies where title = ?", (movie,))
-        for result in cur:
-            # index 20: poster path
-            # index 3: movie id
-            poster = result[20]
-            movie_id = result[3]
-        recommended_movies.append(
-            # Added movie_id
-            {'title': movie, 'poster_path': poster, 'movie_id': movie_id})
+    if rated_movies:
+        recommended_list = get_recommendation(rated_movies)
+        for movie in recommended_list:
+            # find poster using the title
+            cur.execute("select * from movies where title = ?", (movie,))
+            for result in cur:
+                # index 20: poster path
+                # index 3: movie id
+                poster = result[20]
+                movie_id = result[3]
+            recommended_movies.append(
+                # Added movie_id
+                {'title': movie, 'poster_path': poster, 'movie_id': movie_id})
 
     return jsonify({'movies': recommended_movies})
 
