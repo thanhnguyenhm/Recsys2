@@ -5,7 +5,7 @@ from app.forms import LoginForm, SignupForm
 from flask_login import login_user, logout_user, current_user, login_required
 from app.models import User, MovieRating
 from werkzeug.urls import url_parse
-from app.recommender import top_n_movies
+from app.recommender import top_n_movies, get_recommendation
 from app.all_movies import all_movies
 from flask_jwt_extended import (create_access_token)
 import pandas as pd
@@ -159,6 +159,44 @@ def rated_movies(user):
             # Added movie_id
             {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
     return jsonify({'movies': rated_movies})
+
+# Show recommended movies
+@app.route('/rec_movies/<user>')
+def rec_movies(user):
+    movie_list = MovieRating.query.filter_by(username=user)
+    rated_movies = []
+    recommended_movies = []
+
+    conn = sqlite3.connect("tmdb.db")
+    cur = conn.cursor()
+
+    # find rated movies (similar to rated_movies route)
+    for movie in movie_list:
+        cur.execute("select * from movies where title = ?", (movie.title,))
+        for result in cur:
+            # index 20: poster path
+            # index 3: movie id
+            poster = result[20]
+            movie_id = result[3]
+        rated_movies.append(
+            # Added movie_id
+            {'title': movie.title, 'rating': movie.rating, 'poster_path': poster, 'movie_id': movie_id})
+
+    # find recommendation
+    recommended_list = get_recommendation(rated_movies)
+    for movie in recommended_list:
+        # find poster using the title
+        cur.execute("select * from movies where title = ?", (movie,))
+        for result in cur:
+            # index 20: poster path
+            # index 3: movie id
+            poster = result[20]
+            movie_id = result[3]
+        recommended_movies.append(
+            # Added movie_id
+            {'title': movie, 'poster_path': poster, 'movie_id': movie_id})
+
+    return jsonify({'rec_movies': recommended_movies})
 
 
 # Add rating to movie
