@@ -1,4 +1,5 @@
-# algorithms from https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system
+# algorithms from https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system 
+# and https://medium.com/@sumanadhikari/building-a-movie-recommendation-engine-using-scikit-learn-8dbb11c5aa4b
 import pandas as pd
 import numpy as np
 from functools import reduce
@@ -116,15 +117,3 @@ def get_recommendation(rated_movies):
 
     return recommended_movies_list
 
-
-
-
-# for testing only - To be deleted
-# --------------------------------------------------
-# rated_movies = [{'title': 'Forrest Gump', 'rating': 4},
-#                 {'title': 'Inception', 'rating': 3},
-#                 {'title': 'Black Swan', 'rating': 5}]
-# # get_recommendation(sorted(rated_movies, key=lambda m: m.get('rating'), reverse=True)) # will return 20 recommended movies
-# # ctb_recommender(
-# #     sorted(rated_movies, key=lambda m: m.get('rating'), reverse=True))
-# get_recommendation(rated_movies)

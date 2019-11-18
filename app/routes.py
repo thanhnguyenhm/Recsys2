@@ -196,7 +196,7 @@ def rec_movies(user):
             # Added movie_id
             {'title': movie, 'poster_path': poster, 'movie_id': movie_id})
 
-    return jsonify({'rec_movies': recommended_movies})
+    return jsonify({'movies': recommended_movies})
 
 
 # Add rating to movie

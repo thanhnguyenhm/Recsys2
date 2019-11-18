@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 import RatedMovies from './RatedMovies'
+import RecmdMovies from './RecmdMovies'
 
 class Profile extends Component {
     constructor() {
@@ -45,6 +46,8 @@ class Profile extends Component {
                 </div>
                 <h1 id='title'>Rated Movies</h1>
                 <RatedMovies />
+                <h1 id='title'>Recommended Movies</h1>
+                <RecmdMovies />
             </div>
         )
     }
