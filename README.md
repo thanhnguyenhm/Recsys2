@@ -40,7 +40,9 @@ Windows:
 Unix:
 
     cd frontend
-
+    
+    npm install (only once)
+    
     npm start
 
 ## deactivate virtual environment:
