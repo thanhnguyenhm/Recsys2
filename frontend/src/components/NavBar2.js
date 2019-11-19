@@ -104,7 +104,7 @@ class Landing extends Component {
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                     </ul>
-                    {localStorage.usertoken ? userLink : loginRegLink}
+                    {typeof localStorage.usertoken === "string" && localStorage.usertoken.length !== 15 ? userLink : loginRegLink}
 
                 </div>
             </nav>
