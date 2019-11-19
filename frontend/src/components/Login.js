@@ -7,7 +7,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            errors: {}
+            error: {}
         }
 
         this.onChange = this.onChange.bind(this)
@@ -26,7 +26,11 @@ class Login extends Component {
         }
 
         login(user).then(res => {
-            if (!res.error) {
+            // check if res is error
+            if (typeof res === 'object') { 
+                window.alert("Account not found! Please try again")
+                window.location.reload()
+            } else {
                 this.props.history.push(`/profile`)
             }
         })
