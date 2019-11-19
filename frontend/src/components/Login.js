@@ -29,6 +29,7 @@ class Login extends Component {
             // check if res is error
             if (typeof res === 'object') { 
                 window.alert("Account not found! Please try again")
+                localStorage.clear()
                 window.location.reload()
             } else {
                 this.props.history.push(`/profile`)
