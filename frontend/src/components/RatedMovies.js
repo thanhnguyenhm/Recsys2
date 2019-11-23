@@ -1,4 +1,4 @@
-import MovieModule from "./MovieModule";
+import Movies from "./Movies";
 import React, { useEffect, useState } from "react";
 import jwt_decode from 'jwt-decode'
 
@@ -20,7 +20,7 @@ function RatedMovies() {
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+/*
     var arr = [];
  
     for (var i = 0; i < movies.length; i++) {
@@ -36,6 +36,10 @@ function RatedMovies() {
     return arr.map((movie) => (
         <MovieModule key={movie.id} movie={movie} />
     ));
+*/
+    return (
+        <Movies movies={movies} />
+    )  
 }
 
 export default RatedMovies;

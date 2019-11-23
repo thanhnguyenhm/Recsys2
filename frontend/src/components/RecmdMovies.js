@@ -1,4 +1,4 @@
-import MovieModule from "./MovieModule";
+import Movies from "./Movies";
 import React, { useEffect, useState } from "react";
 import jwt_decode from 'jwt-decode'
 
@@ -21,7 +21,7 @@ function RecmdMovies() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    var arr = [];
+/*    var arr = [];
 
     for (var i = 0; i < movies.length; i++) {
         let movie = {
@@ -32,10 +32,10 @@ function RecmdMovies() {
         };
         arr.push(movie);
     }
-
-    return arr.map((movie) => (
-        <MovieModule key={movie.id} movie={movie} />
-    ));
+*/
+    return (
+        <Movies movies={movies} />
+    )
 }
 
 export default RecmdMovies;
