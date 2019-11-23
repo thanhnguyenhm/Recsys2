@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
 import axios from 'axios';
-
-const API_KEY = '7607a580860a0612a63134f284663524'
+import { API_URL, API_KEY } from '../config';
 
 class MovieDetails extends Component {
     constructor(props) {
@@ -11,7 +10,7 @@ class MovieDetails extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://api.themoviedb.org/3/movie/' + this.props.id + '?api_key=' + API_KEY + "&append_to_response=credits")
+        axios.get(API_URL + this.props.id + '?api_key=' + API_KEY + "&append_to_response=credits")
             .then(res => {
                 const title = res.data.title;
                 const genres = res.data.genres;
