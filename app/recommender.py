@@ -1,11 +1,10 @@
-# algorithms from https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system 
+# modified using algorithms from https://www.kaggle.com/ibtesama/getting-started-with-a-movie-recommendation-system 
 # and https://medium.com/@sumanadhikari/building-a-movie-recommendation-engine-using-scikit-learn-8dbb11c5aa4b
 import pandas as pd
 import numpy as np
 from functools import reduce
 from ast import literal_eval
 import sqlite3
-from collections import OrderedDict
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -37,12 +36,8 @@ q_movies['score'] = q_movies.apply(weighted_rating, axis=1)
 # Sort movies based on score calculated above
 q_movies = q_movies.sort_values('score', ascending=False)
 
-# Print the top n movies
-
 
 def top_n_movies(n):
-    #zipOb = zip(list(q_movies['title'].head(n)), list(q_movies['poster_path'].head(n)))
-    #return OrderedDict(zipOb)
     return list(q_movies['title'].head(n))
 
 
@@ -115,5 +110,13 @@ def get_recommendation(rated_movies):
         recommended_movies_list.extend(ctb_recommender(
             movie.get('title'), movie.get('num'), cosine_sim, df))
 
-    return recommended_movies_list
+    # transform rated_movies into list of movie titles
+    movies_list = [movie.get('title') for movie in rated_movies]
+
+    # remove any rated movie that appears in recommended_movies_list
+    for movie in recommended_movies_list:
+        if movie in movies_list:
+            recommended_movies_list.remove(movie)
+
+    return list(set(recommended_movies_list)) # remove duplicates before return result
 

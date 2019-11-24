@@ -8,7 +8,7 @@ export const register = newUser => {
             password: newUser.password
         })
         .then(response => {
-            console.log('Registered')
+            window.alert("You've successfully signed up. Please log in.")
         })
 }
 
