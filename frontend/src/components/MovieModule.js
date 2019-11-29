@@ -5,7 +5,6 @@ import no_img from './no_image.png'
 import { rate } from './UserFunctions'
 import jwt_decode from 'jwt-decode'
 import MovieDetails from './MovieDetails'
-import { Redirect } from 'react-router-dom';
 
 class MovieModule extends Component {
     constructor(props) {
