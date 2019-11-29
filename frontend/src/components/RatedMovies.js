@@ -38,7 +38,7 @@ function RatedMovies() {
     ));
 */
     return (
-        <Movies movies={movies} />
+        <Movies movies={movies} rated={true}/>
     )  
 }
 

@@ -43,7 +43,7 @@ export const getProfile = user => {
 
 export const rate = rate => {
     return axios
-        .post('/add_rating', {
+        .post('add_rating', {
             title: rate.title,
             rating: rate.rating,
             user: rate.user

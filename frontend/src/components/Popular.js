@@ -16,7 +16,7 @@ function Popular() {
     return (
         <div className='.f2 tc pa4'>
             <h1 id='title'>Popular Movies</h1>
-            <Movies movies={movies} />
+            <Movies movies={movies} rated={false}/>
         </div>
     )  
 }
