@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
     def load_user(id):
         return User.query.get(int(id))
 
-class MovieRating(db.Model):
+class MovieRating(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     username = db.Column(db.String(64))
