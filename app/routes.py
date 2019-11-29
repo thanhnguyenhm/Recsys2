@@ -209,7 +209,7 @@ def add_rating():
 
     # check if current rating exists
     rating = MovieRating.query.filter_by(title=movie_data['title'], username=movie_data['user']).first()
-    if rating is not None:
+    if not rating:
         db.session.delete(rating)
         db.session.commit()
 
