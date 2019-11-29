@@ -48,4 +48,7 @@ export const rate = rate => {
             rating: rate.rating,
             user: rate.user
         })
+    .then(response => {
+        console.log('Rated')
+    })
 }

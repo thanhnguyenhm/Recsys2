@@ -28,7 +28,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "https://recsys160.herokuapp.com/",
+  "proxy": "http://0.0.0.0:5000",
   "browserslist": {
     "production": [
       ">0.2%",
