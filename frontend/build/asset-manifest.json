@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/thanhnguyenhm/Recsys2/static/css/main.75827616.chunk.css",
-    "main.js": "/thanhnguyenhm/Recsys2/static/js/main.e23e99e8.chunk.js",
-    "main.js.map": "/thanhnguyenhm/Recsys2/static/js/main.e23e99e8.chunk.js.map",
-    "runtime-main.js": "/thanhnguyenhm/Recsys2/static/js/runtime-main.e38d5b57.js",
-    "runtime-main.js.map": "/thanhnguyenhm/Recsys2/static/js/runtime-main.e38d5b57.js.map",
-    "static/css/2.9d6dfeae.chunk.css": "/thanhnguyenhm/Recsys2/static/css/2.9d6dfeae.chunk.css",
-    "static/js/2.49e35eb3.chunk.js": "/thanhnguyenhm/Recsys2/static/js/2.49e35eb3.chunk.js",
-    "static/js/2.49e35eb3.chunk.js.map": "/thanhnguyenhm/Recsys2/static/js/2.49e35eb3.chunk.js.map",
-    "index.html": "/thanhnguyenhm/Recsys2/index.html",
-    "precache-manifest.1b8a4bac9a2f46f109e0e5eb158b7fba.js": "/thanhnguyenhm/Recsys2/precache-manifest.1b8a4bac9a2f46f109e0e5eb158b7fba.js",
-    "service-worker.js": "/thanhnguyenhm/Recsys2/service-worker.js",
-    "static/css/2.9d6dfeae.chunk.css.map": "/thanhnguyenhm/Recsys2/static/css/2.9d6dfeae.chunk.css.map",
-    "static/css/main.75827616.chunk.css.map": "/thanhnguyenhm/Recsys2/static/css/main.75827616.chunk.css.map",
-    "static/media/no_image.png": "/thanhnguyenhm/Recsys2/static/media/no_image.ddfab154.png"
+    "main.css": "/thanhnguyenhm/Recsys160/static/css/main.75827616.chunk.css",
+    "main.js": "/thanhnguyenhm/Recsys160/static/js/main.8abcaa54.chunk.js",
+    "main.js.map": "/thanhnguyenhm/Recsys160/static/js/main.8abcaa54.chunk.js.map",
+    "runtime-main.js": "/thanhnguyenhm/Recsys160/static/js/runtime-main.dbbdf657.js",
+    "runtime-main.js.map": "/thanhnguyenhm/Recsys160/static/js/runtime-main.dbbdf657.js.map",
+    "static/css/2.9d6dfeae.chunk.css": "/thanhnguyenhm/Recsys160/static/css/2.9d6dfeae.chunk.css",
+    "static/js/2.49e35eb3.chunk.js": "/thanhnguyenhm/Recsys160/static/js/2.49e35eb3.chunk.js",
+    "static/js/2.49e35eb3.chunk.js.map": "/thanhnguyenhm/Recsys160/static/js/2.49e35eb3.chunk.js.map",
+    "index.html": "/thanhnguyenhm/Recsys160/index.html",
+    "precache-manifest.151c981c96677eb277f30c4fb1e35cf8.js": "/thanhnguyenhm/Recsys160/precache-manifest.151c981c96677eb277f30c4fb1e35cf8.js",
+    "service-worker.js": "/thanhnguyenhm/Recsys160/service-worker.js",
+    "static/css/2.9d6dfeae.chunk.css.map": "/thanhnguyenhm/Recsys160/static/css/2.9d6dfeae.chunk.css.map",
+    "static/css/main.75827616.chunk.css.map": "/thanhnguyenhm/Recsys160/static/css/main.75827616.chunk.css.map",
+    "static/media/no_image.png": "/thanhnguyenhm/Recsys160/static/media/no_image.ddfab154.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e38d5b57.js",
+    "static/js/runtime-main.dbbdf657.js",
     "static/css/2.9d6dfeae.chunk.css",
     "static/js/2.49e35eb3.chunk.js",
     "static/css/main.75827616.chunk.css",
-    "static/js/main.e23e99e8.chunk.js"
+    "static/js/main.8abcaa54.chunk.js"
   ]
 }
