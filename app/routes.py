@@ -12,11 +12,13 @@ import pandas as pd
 import numpy as np
 import sqlite3
 from collections import OrderedDict
+from flask_cors import CORS, cross_origin
 
 
 
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/index', methods=['POST', 'GET'])
+@cross_origin(supports_credentials=True)
 def index():
     topN = top_n_movies(50)
     #return jsonify(topN)
