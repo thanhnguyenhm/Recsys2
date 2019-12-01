@@ -30,7 +30,6 @@ export const login = user => {
 export const getProfile = user => {
     return axios
         .get('users/profile', {
-            //headers: { Authorization: ` ${this.getToken()}` }
         })
         .then(response => {
             console.log(response)
@@ -48,7 +47,4 @@ export const rate = rate => {
             rating: rate.rating,
             user: rate.user
         })
-        // .then(response => {
-        //     console.log('Rated')
-        // })
 }

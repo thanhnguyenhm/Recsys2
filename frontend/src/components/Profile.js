@@ -33,12 +33,12 @@ class Profile extends Component {
                         <table className="table col-md-6 mx-auto">
                             <tbody>
                                 <tr>
-                                    <td className="bg-success">Username</td>
-                                    <td className="mark">{this.state.username}</td>
+                                    <td className="badge badge-dark text-white col-8">Username</td>
+                                    <td>{this.state.username}</td>
                                 </tr>
                                 <tr>
-                                    <td className="bg-success">Email</td>
-                                    <td className="mark">{this.state.email}</td>
+                                    <td className="badge badge-dark text-white col-8">Email</td>
+                                    <td>{this.state.email}</td>
                                 </tr>
                             </tbody>
                         </table>

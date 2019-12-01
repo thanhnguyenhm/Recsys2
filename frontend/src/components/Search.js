@@ -6,7 +6,6 @@ function Search() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        //getMovies(localStorage.getItem('query')[0] != '[' ? localStorage.getItem('query') : '')
         fetch('/movies?search=' + localStorage.getItem('query') + '&limit=50')
         .then(response =>
             response.json().then(data => {

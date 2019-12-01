@@ -20,23 +20,7 @@ function RatedMovies() {
         );
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-/*
-    var arr = [];
- 
-    for (var i = 0; i < movies.length; i++) {
-        let movie = {
-            id: movies[i].movie_id,
-            title: movies[i].title,
-            poster: movies[i].poster_path,
-            rating: movies[i].rating
-        };
-        arr.push(movie);
-    }
 
-    return arr.map((movie) => (
-        <MovieModule key={movie.id} movie={movie} />
-    ));
-*/
     return (
         <div className='.f2 tc pa4'>
             <h1 id='title'>Rated Movies</h1>
