@@ -44,8 +44,8 @@ class Profile extends Component {
                         </table>
                     </div>
                 </div>
-                <RatedMovies />
                 <RecmdMovies />
+                <RatedMovies />
             </div>
         )
     }

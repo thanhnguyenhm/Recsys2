@@ -1,4 +1,16 @@
-After cloning to your local machine:
+# Team project for Software Engineering class
+
+**Website: https://recsys.netlify.com**
+
+For demonstration purpose, use account __*guest*__, password __*123*__.
+
+There're some differences between production and development environment:
+- Need to manually refresh the page when rating and removing ratings to see changes in Profile page
+- It may take 5-10 seconds for recommendation engine to compute. If it takes longer, refresh the page.
+- Databases in two environment are different.
+
+
+# Local environment setup (require API KEY from TMDB)
 
 ## create config.js:
 Place config.js in frontend/src/
@@ -36,8 +48,6 @@ Unix:
 
     export FLASK_APP=recsys.py
 
-    export FLASK_DEBUG=1
-
     flask run
 
 Windows:
@@ -47,13 +57,10 @@ Windows:
     flask run
 
 ## run React front end:
-Unix:
+Unix/Windows:
 
     cd frontend
     
     npm install (only once)
     
     npm start
-
-## deactivate virtual environment:
-    deactivate
