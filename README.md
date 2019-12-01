@@ -1,6 +1,6 @@
 # Team project for Software Engineering class
 
-**Website: https://recsys.netlify.com**
+**Website: https://recsys-cs160.herokuapp.com**
 
 For demonstration purpose, use account __*guest*__, password __*123*__.
 
