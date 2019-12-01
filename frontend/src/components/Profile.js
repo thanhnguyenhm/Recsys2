@@ -44,10 +44,10 @@ class Profile extends Component {
                         </table>
                     </div>
                 </div>
-                <h1 id='title'>Rated Movies</h1>
-                <RatedMovies />
                 <h1 id='title'>Recommended Movies</h1>
                 <RecmdMovies />
+                <h1 id='title'>Rated Movies</h1>
+                <RatedMovies />
             </div>
         )
     }
