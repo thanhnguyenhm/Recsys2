@@ -1,6 +1,7 @@
 import Movies from "./Movies";
 import React, { useEffect, useState } from "react";
 import jwt_decode from 'jwt-decode'
+import { BACKEND_API } from '../config';
 
 function RecmdMovies() {
     const [movies, setMovies] = useState([]);
@@ -10,7 +11,7 @@ function RecmdMovies() {
     const decoded = jwt_decode(token)
     const user = decoded.identity.username;
 
-    const url = "/rec_movies/" + user
+    const url = BACKEND_API + "/rec_movies/" + user
 
     useEffect(() => {
         fetch(url).then(response =>
@@ -22,7 +23,7 @@ function RecmdMovies() {
     }, []);
 
     return (
-        <Movies movies={movies} />
+        <Movies movies={movies} rated={false}/>
     )
 }
 

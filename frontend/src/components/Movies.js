@@ -16,7 +16,7 @@ class Movies extends Component {
             arr.push(movie);
         }
         return arr.map((movie) => (
-            <MovieModule key={movie.id} movie={movie} />
+            <MovieModule key={movie.id} movie={movie} rated={this.props.rated}/>
         ));
     }
 }

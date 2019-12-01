@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { BACKEND_API } from '../config';
 
 export const register = newUser => {
     return axios
-        .post('users/register', {
+        .post(BACKEND_API + 'users/register', {
             username: newUser.username,
             email: newUser.email,
             password: newUser.password
@@ -14,7 +15,7 @@ export const register = newUser => {
 
 export const login = user => {
     return axios
-        .post('users/login', {
+        .post(BACKEND_API + 'users/login', {
             username: user.username,
             password: user.password
         })
@@ -29,7 +30,7 @@ export const login = user => {
 
 export const getProfile = user => {
     return axios
-        .get('users/profile', {
+        .get(BACKEND_API + 'users/profile', {
             //headers: { Authorization: ` ${this.getToken()}` }
         })
         .then(response => {
@@ -43,7 +44,7 @@ export const getProfile = user => {
 
 export const rate = rate => {
     return axios
-        .post('add_rating', {
+        .post(BACKEND_API + 'add_rating', {
             title: rate.title,
             rating: rate.rating,
             user: rate.user

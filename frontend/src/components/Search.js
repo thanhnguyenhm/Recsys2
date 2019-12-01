@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movies from './Movies'
+import { BACKEND_API } from '../config';
 //import { getMovies } from './MovieFunctions'
 
 function Search() {
@@ -7,7 +8,7 @@ function Search() {
 
     useEffect(() => {
         //getMovies(localStorage.getItem('query')[0] != '[' ? localStorage.getItem('query') : '')
-        fetch('/movies?search=' + localStorage.getItem('query') + '&limit=50')
+        fetch(BACKEND_API + '/movies?search=' + localStorage.getItem('query') + '&limit=50')
         .then(response =>
             response.json().then(data => {
                 console.log(data)

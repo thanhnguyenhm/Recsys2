@@ -1,11 +1,12 @@
 import Movies from "./Movies";
 import React, { useEffect, useState } from "react";
 import { Pagination } from 'semantic-ui-react';
+import { BACKEND_API } from '../config';
 
 function AllMovies() {
     const [movies, setMovies] = useState([]);
     const [activePage, setActivePage] = useState(1);
-    const [apiUrl, setApiUrl] = useState('/browse/1');
+    const [apiUrl, setApiUrl] = useState(BACKEND_API + '/browse/1');
 
     useEffect(() => {
         fetch(apiUrl).then(response =>
@@ -17,7 +18,7 @@ function AllMovies() {
 
     const onChange = (e, pageInfo) => {
         setActivePage(pageInfo.activePage);
-        setApiUrl('\\browse\\' + pageInfo.activePage);
+        setApiUrl(BACKEND_API + '\\browse\\' + pageInfo.activePage);
     };
 
     return (
@@ -30,7 +31,7 @@ function AllMovies() {
                 ellipsisItem={null}
             />
             <div>
-                <Movies movies={movies} />      
+                <Movies movies={movies} rated={false} />      
             </div>
             <Pagination
                 activePage={activePage}

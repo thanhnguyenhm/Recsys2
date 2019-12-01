@@ -26,6 +26,7 @@ class MovieModule extends Component {
             img_src = "http://image.tmdb.org/t/p/w300" + this.props.movie.poster;
         }
 
+        if (this.props.rated) {
         return (
             <div className='dib pa3 grow'>
                 <Card>
@@ -67,7 +68,50 @@ class MovieModule extends Component {
             </div>
             
             
-        )
+        ) 
+        } else {
+            return (
+                <div className='dib pa3 grow'>
+                    <Card>
+                        <Image src={img_src} wrapped ui={false} onClick={this.toggleMovieDetails.bind(this)} />
+                        <Card.Content>
+                            <Card.Header>{this.props.movie.title}</Card.Header>
+                        </Card.Content>
+                        <Card.Content>
+                            <Rating
+                                size='massive'
+                                icon='star'
+                                maxRating={5}
+                                clearable
+                                onRate={async (_, data) => {
+                                    if (!localStorage.usertoken) {
+                                        window.alert("Your rating is not saved. You need to log in first.");
+                                    }
+                                    else {
+                                        const token = localStorage.usertoken
+                                        const decoded = jwt_decode(token)
+                                        const user = decoded.identity.username;
+                                        const title = this.props.movie.title;
+                                        const rating = data.rating;
+                                        const movie = { title, rating, user };
+                                        rate(movie)
+                                    }
+                                    // window.location.reload()
+                                }}
+
+                            />
+                        </Card.Content>
+
+                    </Card>
+                    {this.state.showMovieDetails ?
+                        <MovieDetails id={this.props.movie.id} close={this.toggleMovieDetails.bind(this)} />
+                        : null
+                    }
+                </div>
+
+
+            )
+        }
     }
 }
 
