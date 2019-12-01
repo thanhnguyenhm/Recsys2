@@ -84,15 +84,15 @@ class Landing extends Component {
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 <i className="fas fa-home f3 pa2"></i> Home
-                    </Link>
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/browse" className="nav-link">
                                 <i className="fas fa-film f3 pa2"></i> All Movies
-                        </Link>
+                            </Link>
                         </li>
                     </ul>
-                    <ul className="navbar-nav mr-auto pa2">
+                    <ul className="navbar-nav">
                         <Form onSubmit={this.search.bind(this)}>
                             <Form.Input 
                                 icon={<Icon name='search' inverted circular link onClick={this.search.bind(this)}/>}
@@ -102,10 +102,9 @@ class Landing extends Component {
                             />
                         </Form>
                     </ul>
-                    <ul className="nav navbar-nav navbar-right">
+                    <ul className="nav navbar-nav ml-auto navbar-right">
                     </ul>
                     {typeof localStorage.usertoken === "string" && localStorage.usertoken.length !== 15 ? userLink : loginRegLink}
-
                 </div>
             </nav>
         )
