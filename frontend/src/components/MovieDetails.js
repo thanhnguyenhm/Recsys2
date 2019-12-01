@@ -41,7 +41,7 @@ class MovieDetails extends Component {
     render() {
         return (
             <div className='moviedetails' onClick={this.props.close}>
-                <div className='moviedetailsinner col-xs-4'>
+                <div className='moviedetailsinner'>
                     <h1 className='text-primary text-center'>{this.state.title}</h1>
                     <h3 className='moviedetails_subtitle'>Directors</h3>
                     <p className='moviedetails_text'>{this.getNames(this.state.directors)}</p>
