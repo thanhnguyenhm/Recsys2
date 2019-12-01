@@ -8,19 +8,14 @@
     bottom: 0;
     margin: auto;
     background-color: rgba(20, 20, 20, 0.9);
-    max-height: 100%;
-    overflow-y: scroll;
+    border-radius: 10px;
+    border: 1px solid white;
 }
 
-.moviedetails\_inner {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    right: 25%;
-    bottom: 25%;
-    margin: auto;
-    border-radius: 20px;
-    background: white;
+.moviedetailsinner {
+    margin-top: 4%;
+    max-height: 96%;
+    overflow-y: scroll;
 }
 
 .moviedetails_title {

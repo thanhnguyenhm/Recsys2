@@ -24,7 +24,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
+            <div className='.f2 tc pa4'>
                 <div className="container">
                     <div className="jumbotron mt-5">
                         <div className="col-sm-8 mx-auto">
@@ -33,20 +33,18 @@ class Profile extends Component {
                         <table className="table col-md-6 mx-auto">
                             <tbody>
                                 <tr>
-                                    <td>Username</td>
-                                    <td>{this.state.username}</td>
+                                    <td className="bg-success">Username</td>
+                                    <td className="mark">{this.state.username}</td>
                                 </tr>
                                 <tr>
-                                    <td>Email</td>
-                                    <td>{this.state.email}</td>
+                                    <td className="bg-success">Email</td>
+                                    <td className="mark">{this.state.email}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <h1 id='title'>Rated Movies</h1>
                 <RatedMovies />
-                <h1 id='title'>Recommended Movies</h1>
                 <RecmdMovies />
             </div>
         )

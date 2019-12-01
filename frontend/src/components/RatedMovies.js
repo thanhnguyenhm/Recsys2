@@ -38,7 +38,10 @@ function RatedMovies() {
     ));
 */
     return (
-        <Movies movies={movies} />
+        <div className='.f2 tc pa4'>
+            <h1 id='title'>Rated Movies</h1>
+            <Movies movies={movies} />
+        </div>
     )  
 }
 
