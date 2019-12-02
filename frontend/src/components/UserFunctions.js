@@ -9,6 +9,12 @@ export const register = newUser => {
         })
         .then(response => {
             window.alert("You've successfully signed up. Please log in.")
+            localStorage.setItem('usertoken', response.data)
+            return response.data
+        })
+        .catch(err => {
+            window.alert("username or email is already existed.")
+            
         })
 }
 
