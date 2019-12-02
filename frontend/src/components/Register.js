@@ -28,7 +28,13 @@ class Register extends Component {
         }
 
         register(newUser).then(res => {
-            this.props.history.push(`/login`)
+            if (typeof res === 'object') { 
+                this.props.history.push(`/login`)
+            }
+            else{
+                localStorage.clear()
+                window.location.reload()   
+            }
         })
     }
 
