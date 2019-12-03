@@ -27,7 +27,7 @@ class MovieModule extends Component {
         }
 
         return (
-            <div className='dib pa3 grow'>
+            <div className='dib pa3 zoom'>
                 <Card>
                     <Image src={img_src} wrapped ui={false}  onClick={this.toggleMovieDetails.bind(this)}/>
                     <Card.Content>
@@ -54,11 +54,9 @@ class MovieModule extends Component {
                                 rate(movie)
                             }  
                             window.location.reload()
-                        }}
-                        
+                        }}           
                         />
                     </Card.Content> 
-                    
                 </Card>
                 {this.state.showMovieDetails ?
                     <MovieDetails id={this.props.movie.id} close={this.toggleMovieDetails.bind(this)}/>
