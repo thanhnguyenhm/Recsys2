@@ -12,7 +12,7 @@ function Popular() {
                 setMovies(data.movies);
             })
         );
-    }, []);
+    }, []); 
 
     return (
         <div className='.f2 tc pa4'>

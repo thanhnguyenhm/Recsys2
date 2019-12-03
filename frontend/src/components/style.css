@@ -23,6 +23,14 @@
     background: white;
 }
 
+.zoom {
+  transition: transform .2s; 
+}
+
+.zoom:hover {
+  transform: scale(1.05); 
+}
+
 .moviedetails_title {
     color: rgba(255, 255, 255, 0.65);
     text-align: center;

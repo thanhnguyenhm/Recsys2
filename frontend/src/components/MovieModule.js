@@ -28,7 +28,7 @@ class MovieModule extends Component {
 
         if (this.props.rated) {
         return (
-            <div className='dib pa3 grow'>
+            <div className='dib pa3 zoom'> 
                 <Card>
                     <Image src={img_src} wrapped ui={false}  onClick={this.toggleMovieDetails.bind(this)}/>
                     <Card.Content>
@@ -71,7 +71,7 @@ class MovieModule extends Component {
         ) 
         } else {
             return (
-                <div className='dib pa3 grow'>
+                <div className='dib pa3 zoom'>
                     <Card>
                         <Image src={img_src} wrapped ui={false} onClick={this.toggleMovieDetails.bind(this)} />
                         <Card.Content>
