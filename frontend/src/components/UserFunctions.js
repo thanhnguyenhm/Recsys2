@@ -13,7 +13,11 @@ export const register = newUser => {
             return response.data
         })
         .catch(err => {
-            window.alert("username or email is already existed.")
+            if(newUser.username === '' || newUser.email === '' || newUser.password === ''){
+                window.alert("Please fill all the fields") 
+            }else{
+                window.alert("username or email is already existed.")
+            }
             
         })
 }
