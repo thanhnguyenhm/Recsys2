@@ -27,11 +27,13 @@ class Login extends Component {
 
         login(user).then(res => {
             // check if res is error
-            if (typeof res === 'object') { 
+            if(this.state.username === '' || this.state.password === ''){
+                window.alert("Please fill all the fields!")
+            }else if (typeof res === 'object') { 
                 window.alert("Account not found! Please try again")
                 localStorage.clear()
                 window.location.reload()
-            } else {
+            }else {
                 this.props.history.push(`/profile`)
             }
         })
